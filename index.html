@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Jebneh w Zebdeh</title>
+  <title>Afran Jebneh w Zebdeh</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <style>
     [data-lang="ar"] { display: none; direction: rtl; text-align: right; }
@@ -11,16 +11,15 @@
     body.arabic [data-lang="ar"] { display: block; }
   </style>
 </head>
-<body class="bg-white text-gray-800 p-6">
-
-  <div class="max-w-4xl mx-auto">
+<body class="bg-white text-gray-800 p-4 sm:p-6">
+  <div class="max-w-5xl mx-auto">
 
     <!-- Header -->
-    <div class="flex justify-between items-center">
+    <div class="flex flex-col sm:flex-row justify-between items-center gap-4">
       <div class="flex items-center gap-4">
         <img src="logo.png" alt="Logo" class="w-14 h-14">
-        <h1 class="text-3xl font-bold" data-lang="en">Afran Jebneh w Zebdeh</h1>
-        <h1 class="text-3xl font-bold" data-lang="ar">أفران جبنة وزبدة</h1>
+        <h1 class="text-2xl sm:text-3xl font-bold" data-lang="en">Afran Jebneh w Zebdeh</h1>
+        <h1 class="text-2xl sm:text-3xl font-bold" data-lang="ar">أفران جبنة وزبدة</h1>
       </div>
       <button onclick="toggleLang()" class="border px-4 py-1 rounded-lg hover:bg-gray-100 text-sm">
         🌐 <span id="lang-button-text">عربي</span>
@@ -28,7 +27,7 @@
     </div>
 
     <!-- Navigation -->
-    <div class="mt-6 flex gap-4 text-lg font-semibold border-b pb-2">
+    <div class="mt-6 flex flex-wrap gap-3 text-base sm:text-lg font-semibold border-b pb-2">
       <a href="#menu" class="hover:text-red-600" data-lang="en">Menu</a>
       <a href="#menu" class="hover:text-red-600" data-lang="ar">القائمة</a>
       <a href="#branches" class="hover:text-red-600" data-lang="en">Order from Closest Branch</a>
@@ -43,94 +42,48 @@
 
     <!-- Menu -->
     <div id="menu" class="mt-8">
-      <h2 class="text-2xl font-bold mb-4" data-lang="en">Menu</h2>
-      <h2 class="text-2xl font-bold mb-4" data-lang="ar">القائمة</h2>
-      <img src="menu.jpg" alt="Menu" class="rounded-xl w-full max-w-3xl">
+      <h2 class="text-xl sm:text-2xl font-bold mb-4" data-lang="en">Menu</h2>
+      <h2 class="text-xl sm:text-2xl font-bold mb-4" data-lang="ar">القائمة</h2>
+      <img src="menu.jpg" alt="Menu" class="rounded-xl w-full h-auto">
     </div>
 
-    <!-- Branches renamed to "Order from Closest Branch" -->
+    <!-- Branches -->
     <div id="branches" class="mt-10">
-      <h2 class="text-2xl font-bold mb-4" data-lang="en">Order from Closest Branch</h2>
-      <h2 class="text-2xl font-bold mb-4" data-lang="ar">اطلب من أقرب فرع</h2>
+      <h2 class="text-xl sm:text-2xl font-bold mb-4" data-lang="en">Order from Closest Branch</h2>
+      <h2 class="text-xl sm:text-2xl font-bold mb-4" data-lang="ar">اطلب من أقرب فرع</h2>
       <ul class="space-y-4">
-        <li class="border p-4 rounded-lg" data-lang="en">
-          <strong>Dmit:</strong> 
-          <a href="https://wa.me/96176525207" target="_blank" class="text-blue-600 hover:underline">76525207</a>
-        </li>
-        <li class="border p-4 rounded-lg" data-lang="ar">
-          <strong>فرع دميت:</strong> 
-          <a href="https://wa.me/96176525207" target="_blank" class="text-blue-600 hover:underline">76525207</a>
-        </li>
-
-        <li class="border p-4 rounded-lg" data-lang="en">
-          <strong>Bakaata:</strong> 
-          <a href="https://wa.me/96171525213" target="_blank" class="text-blue-600 hover:underline">71525213</a>
-        </li>
-        <li class="border p-4 rounded-lg" data-lang="ar">
-          <strong>فرع بقعاتا:</strong> 
-          <a href="https://wa.me/96171525213" target="_blank" class="text-blue-600 hover:underline">71525213</a>
-        </li>
-
-        <li class="border p-4 rounded-lg" data-lang="en">
-          <strong>Baakleen:</strong> 
-          <a href="https://wa.me/96176171121" target="_blank" class="text-blue-600 hover:underline">76171121</a>
-        </li>
-        <li class="border p-4 rounded-lg" data-lang="ar">
-          <strong>فرع بعقلين:</strong> 
-          <a href="https://wa.me/96176171121" target="_blank" class="text-blue-600 hover:underline">76171121</a>
-        </li>
-
-        <li class="border p-4 rounded-lg" data-lang="en">
-          <strong>Aley Starko:</strong> 
-          <a href="https://wa.me/96170899908" target="_blank" class="text-blue-600 hover:underline">70899908</a> / 
-          <a href="https://wa.me/9615555213" target="_blank" class="text-blue-600 hover:underline">05555213</a>
-        </li>
-        <li class="border p-4 rounded-lg" data-lang="ar">
-          <strong>فرع عاليه ستاركو:</strong> 
-          <a href="https://wa.me/96170899908" target="_blank" class="text-blue-600 hover:underline">70899908</a> / 
-          <a href="https://wa.me/9615555213" target="_blank" class="text-blue-600 hover:underline">05555213</a>
-        </li>
-
-        <li class="border p-4 rounded-lg" data-lang="en">
-          <strong>Qabr Chamoun:</strong> 
-          <a href="https://wa.me/9613515537" target="_blank" class="text-blue-600 hover:underline">03515537</a>
-        </li>
-        <li class="border p-4 rounded-lg" data-lang="ar">
-          <strong>فرع قبرشمون:</strong> 
-          <a href="https://wa.me/9613515537" target="_blank" class="text-blue-600 hover:underline">03515537</a>
-        </li>
-
-        <li class="border p-4 rounded-lg" data-lang="en">
-          <strong>Beirut (Mousaytbeh):</strong> 
-          <a href="https://wa.me/96176525213" target="_blank" class="text-blue-600 hover:underline">76525213</a> / 
-          <a href="https://wa.me/9611302340" target="_blank" class="text-blue-600 hover:underline">01302340</a>
-        </li>
-        <li class="border p-4 rounded-lg" data-lang="ar">
-          <strong>فرع بيروت (المصيطبة):</strong> 
-          <a href="https://wa.me/96176525213" target="_blank" class="text-blue-600 hover:underline">76525213</a> / 
-          <a href="https://wa.me/9611302340" target="_blank" class="text-blue-600 hover:underline">01302340</a>
-        </li>
+        <li class="border p-4 rounded-lg" data-lang="en"><strong>Dmit:</strong> <a href="https://wa.me/96176525207" class="text-blue-600 hover:underline">76525207</a></li>
+        <li class="border p-4 rounded-lg" data-lang="ar"><strong>فرع دميت:</strong> <a href="https://wa.me/96176525207" class="text-blue-600 hover:underline">76525207</a></li>
+        <li class="border p-4 rounded-lg" data-lang="en"><strong>Bakaata:</strong> <a href="https://wa.me/96171525213" class="text-blue-600 hover:underline">71525213</a></li>
+        <li class="border p-4 rounded-lg" data-lang="ar"><strong>فرع بقعاتا:</strong> <a href="https://wa.me/96171525213" class="text-blue-600 hover:underline">71525213</a></li>
+        <li class="border p-4 rounded-lg" data-lang="en"><strong>Baakleen:</strong> <a href="https://wa.me/96176171121" class="text-blue-600 hover:underline">76171121</a></li>
+        <li class="border p-4 rounded-lg" data-lang="ar"><strong>فرع بعقلين:</strong> <a href="https://wa.me/96176171121" class="text-blue-600 hover:underline">76171121</a></li>
+        <li class="border p-4 rounded-lg" data-lang="en"><strong>Aley Starko:</strong> <a href="https://wa.me/96170899908" class="text-blue-600 hover:underline">70899908</a> / <a href="https://wa.me/9615555213" class="text-blue-600 hover:underline">05555213</a></li>
+        <li class="border p-4 rounded-lg" data-lang="ar"><strong>فرع عاليه ستاركو:</strong> <a href="https://wa.me/96170899908" class="text-blue-600 hover:underline">70899908</a> / <a href="https://wa.me/9615555213" class="text-blue-600 hover:underline">05555213</a></li>
+        <li class="border p-4 rounded-lg" data-lang="en"><strong>Qabr Chamoun:</strong> <a href="https://wa.me/9613515537" class="text-blue-600 hover:underline">03515537</a></li>
+        <li class="border p-4 rounded-lg" data-lang="ar"><strong>فرع قبرشمون:</strong> <a href="https://wa.me/9613515537" class="text-blue-600 hover:underline">03515537</a></li>
+        <li class="border p-4 rounded-lg" data-lang="en"><strong>Beirut (Mousaytbeh):</strong> <a href="https://wa.me/96176525213" class="text-blue-600 hover:underline">76525213</a> / <a href="https://wa.me/9611302340" class="text-blue-600 hover:underline">01302340</a></li>
+        <li class="border p-4 rounded-lg" data-lang="ar"><strong>فرع بيروت (المصيطبة):</strong> <a href="https://wa.me/96176525213" class="text-blue-600 hover:underline">76525213</a> / <a href="https://wa.me/9611302340" class="text-blue-600 hover:underline">01302340</a></li>
       </ul>
     </div>
 
     <!-- About Us -->
     <div id="about" class="mt-10">
-      <h2 class="text-2xl font-bold mb-4" data-lang="en">About Us</h2>
-      <h2 class="text-2xl font-bold mb-4" data-lang="ar">من نحن</h2>
-      <p class="text-lg leading-relaxed" data-lang="en">
+      <h2 class="text-xl sm:text-2xl font-bold mb-4" data-lang="en">About Us</h2>
+      <h2 class="text-xl sm:text-2xl font-bold mb-4" data-lang="ar">من نحن</h2>
+      <p class="text-base sm:text-lg leading-relaxed" data-lang="en">
         Afran Jebneh w Zebdeh offers delicious manakish, pizza, and sweets 24/7. 
         We are not the only ones, but we are unique. Managed by Basel Abou Moujahed.
       </p>
-      <p class="text-lg leading-relaxed" data-lang="ar">
+      <p class="text-base sm:text-lg leading-relaxed" data-lang="ar">
         أفران جبنة وزبدة تقدم أشهى المناقيش والبيتزا والحلويات على مدار الساعة. لسنا الوحيدين ولكننا متميزين. بإدارة باسل أبو مجاهد.
       </p>
     </div>
 
     <!-- Contact -->
     <div id="contact" class="mt-10">
-      <h2 class="text-2xl font-bold mb-4" data-lang="en">Contact</h2>
-      <h2 class="text-2xl font-bold mb-4" data-lang="ar">تواصل معنا</h2>
-
+      <h2 class="text-xl sm:text-2xl font-bold mb-4" data-lang="en">Contact</h2>
+      <h2 class="text-xl sm:text-2xl font-bold mb-4" data-lang="ar">تواصل معنا</h2>
       <p data-lang="en" class="mb-4">
         Enjoyed your tasty bite?<br/>
         Spread the word, share the delight!<br/>
@@ -138,22 +91,20 @@
         Tell us and we’ll make it bright.<br/>
         <strong>70515537</strong>
       </p>
-
       <p data-lang="ar" class="mb-4">
         إذا تروقت وأكلنا عجبك, خبّر أهل الحارة<br/>
         وإذا أي شي زعجك, اشتكي للإدارة<br/>
         <strong>70515537</strong>
       </p>
-
-      <p data-lang="en"> </p>
-      <p data-lang="ar">  </p>
+      <p data-lang="en">Mousaytbeh, Beirut</p>
+      <p data-lang="ar">بيروت - المصيطبة</p>
     </div>
 
-    <!-- Follow Us Section -->
+    <!-- Follow Us -->
     <div id="follow" class="mt-10">
-      <h2 class="text-2xl font-bold mb-4" data-lang="en">Follow Us</h2>
-      <h2 class="text-2xl font-bold mb-4" data-lang="ar">تابعنا</h2>
-      <div class="flex gap-6 text-lg">
+      <h2 class="text-xl sm:text-2xl font-bold mb-4" data-lang="en">Follow Us</h2>
+      <h2 class="text-xl sm:text-2xl font-bold mb-4" data-lang="ar">تابعنا</h2>
+      <div class="flex flex-wrap gap-4 text-base">
         <a href="https://www.instagram.com/jebnehwzebdeh" target="_blank" class="hover:text-red-600">📸 Instagram</a>
         <a href="https://www.tiktok.com/@jebnehwzebdeh?is_from_webapp=1&sender_device=pc" target="_blank" class="hover:text-red-600">🎵 TikTok</a>
         <a href="https://www.facebook.com/p/Jebneh-W-Zebdeh-100091450007918" target="_blank" class="hover:text-red-600">📘 Facebook</a>
