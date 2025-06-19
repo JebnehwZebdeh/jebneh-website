@@ -2,10 +2,80 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Afran Jebneh w Zebdeh</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
-<body>
-  <h1>Welcome to Afran Jebneh w Zebdeh</h1>
-  <p>This is your website — we will make it better soon!</p>
+<body class="bg-white text-gray-800 p-6">
+  <div class="max-w-4xl mx-auto">
+
+    <!-- Header -->
+    <div class="flex justify-between items-center">
+      <div class="flex items-center gap-4">
+        <img src="logo.png" alt="Logo" class="w-14 h-14">
+        <h1 class="text-3xl font-bold">Afran Jebneh w Zebdeh</h1>
+      </div>
+    </div>
+
+    <!-- Navigation -->
+    <div class="mt-6 flex gap-4 text-lg font-semibold border-b pb-2">
+      <a href="#menu" class="hover:text-red-600">Menu</a>
+      <a href="#branches" class="hover:text-red-600">Branches</a>
+      <a href="#about" class="hover:text-red-600">About Us</a>
+      <a href="#contact" class="hover:text-red-600">Contact</a>
+    </div>
+
+    <!-- Menu -->
+    <div id="menu" class="mt-8">
+      <h2 class="text-2xl font-bold mb-4">Menu</h2>
+      <img src="menu.jpg" alt="Menu" class="rounded-xl w-full max-w-3xl">
+    </div>
+
+    <!-- Branches -->
+    <div id="branches" class="mt-10">
+      <h2 class="text-2xl font-bold mb-4">Branches</h2>
+      <ul class="space-y-4">
+        <li class="border p-4 rounded-lg">
+          <strong>Dmit:</strong> 76 525 207
+        </li>
+        <li class="border p-4 rounded-lg">
+          <strong>Bakaata:</strong> 71 525 213
+        </li>
+        <li class="border p-4 rounded-lg">
+          <strong>Baakleen:</strong> 76 171 121
+        </li>
+        <li class="border p-4 rounded-lg">
+          <strong>Aley Starko:</strong> 70 899 908 / 05 555 213
+        </li>
+        <li class="border p-4 rounded-lg">
+          <strong>Qabr Chamoun:</strong> 03 515 537
+        </li>
+        <li class="border p-4 rounded-lg">
+          <strong>Beirut (Mousaytbeh):</strong> 76 525 213 / 01 302 340
+        </li>
+      </ul>
+    </div>
+
+    <!-- About Us -->
+    <div id="about" class="mt-10">
+      <h2 class="text-2xl font-bold mb-4">About Us</h2>
+      <p class="text-lg leading-relaxed">
+        Afran Jebneh w Zebdeh offers delicious manakish, pizza, and sweets 24/7. 
+        We are not the only ones, but we are unique. Managed by Basel Abou Moujahed.
+      </p>
+    </div>
+
+    <!-- Contact -->
+    <div id="contact" class="mt-10">
+      <h2 class="text-2xl font-bold mb-4">Contact</h2>
+      <p>Mousaytbeh, Beirut</p>
+      <div class="flex gap-4 mt-2">
+        <a href="https://www.instagram.com/jebnehwzebdeh" target="_blank">📸 Instagram</a>
+        <a href="https://www.tiktok.com/@jebnehwzebdeh?is_from_webapp=1&sender_device=pc" target="_blank">🎵 TikTok</a>
+        <a href="https://www.facebook.com/p/Jebneh-W-Zebdeh-100091450007918" target="_blank">📘 Facebook</a>
+      </div>
+    </div>
+
+  </div>
 </body>
 </html>
