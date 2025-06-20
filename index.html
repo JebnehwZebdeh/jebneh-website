@@ -121,53 +121,98 @@
       document.body.classList.toggle("arabic");
       const isArabic = document.body.classList.contains("arabic");
       document.getElementById("lang-button-text").textContent = isArabic ? "English" : "عربي";
+      // Update menu display after language toggle
+      renderMenu();
     }
 
     const menuData = [
-      { en: "Manakish", ar: "مناقيش", items: [ { name: "Zaatar", price: "$0.50" }, { name: "Cheese", price: "$1.00" }, { name: "Zaatar & Cheese", price: "$1.50" }, { name: "Kashkawan", price: "$1.50" }, { name: "Hotdog", price: "$2.00" } ] },
-      { en: "Meshrouha", ar: "مشروحة", items: [ { name: "Zaatar Meshrouha", price: "$1.00" }, { name: "Cheese Meshrouha", price: "$1.50" }, { name: "Kashkawan Meshrouha", price: "$2.00" }, { name: "Labneh Meshrouha", price: "$2.00" }, { name: "Cheese & Hotdog", price: "$3.00" } ] },
-      { en: "Saroukh Wraps", ar: "صاروخ", items: [ { name: "Cheese Saroukh", price: "$3.00" }, { name: "Cheese & Zaatar", price: "$3.50" }, { name: "Cheese & Labneh", price: "$4.00" }, { name: "Hotdog & Cheese", price: "$5.00" }, { name: "Chicken & Cheese", price: "$6.00" } ] },
-      { en: "Pizza", ar: "بيتزا", items: [ { name: "Cheese Pizza", price: "$2.50" }, { name: "Zaatar & Cheese", price: "$3.00" }, { name: "Pepperoni", price: "$3.50" }, { name: "Vegetarian", price: "$4.00" } ] },
-      { en: "Special Add-ons", ar: "إضافات مميزة", items: [ { name: "Chicken Shawarma", price: "$4.00" }, { name: "Meat Shawarma", price: "$4.00" }, { name: "Fajita", price: "$4.00" }, { name: "Mushroom & Cream", price: "$4.00" } ] },
-      { en: "Desserts", ar: "ما مننـسى الحلويات", items: [ { name: "منقوشة سنيكرز", price: "$4.00" }, { name: "منقوشة مارس", price: "$4.00" } ] }
+      { en: "Manakish", ar: "مناقيش", items: [ 
+          { name: { en: "Zaatar", ar: "زعتر" }, price: "$0.50" }, 
+          { name: { en: "Cheese", ar: "جبنة" }, price: "$1.00" }, 
+          { name: { en: "Zaatar & Cheese", ar: "زعتر وجبنة" }, price: "$1.50" }, 
+          { name: { en: "Kashkawan", ar: "كشكوان" }, price: "$1.50" }, 
+          { name: { en: "Hotdog", ar: "هوت دوج" }, price: "$2.00" } 
+        ] 
+      },
+      { en: "Meshrouha", ar: "مشروحة", items: [ 
+          { name: { en: "Zaatar Meshrouha", ar: "مشروحة زعتر" }, price: "$1.00" }, 
+          { name: { en: "Cheese Meshrouha", ar: "مشروحة جبنة" }, price: "$1.50" }, 
+          { name: { en: "Kashkawan Meshrouha", ar: "مشروحة كشكوان" }, price: "$2.00" }, 
+          { name: { en: "Labneh Meshrouha", ar: "مشروحة لبنة" }, price: "$2.00" }, 
+          { name: { en: "Cheese & Hotdog", ar: "جبنة وهوت دوج" }, price: "$3.00" } 
+        ] 
+      },
+      { en: "Saroukh Wraps", ar: "صاروخ", items: [ 
+          { name: { en: "Cheese Saroukh", ar: "صاروخ جبنة" }, price: "$3.00" }, 
+          { name: { en: "Cheese & Zaatar", ar: "جبنة وزعتر" }, price: "$3.50" }, 
+          { name: { en: "Cheese & Labneh", ar: "جبنة ولبنة" }, price: "$4.00" }, 
+          { name: { en: "Hotdog & Cheese", ar: "هوت دوج وجبنة" }, price: "$5.00" }, 
+          { name: { en: "Chicken & Cheese", ar: "دجاج وجبنة" }, price: "$6.00" } 
+        ] 
+      },
+      { en: "Pizza", ar: "بيتزا", items: [ 
+          { name: { en: "Cheese Pizza", ar: "بيتزا جبنة" }, price: "$2.50" }, 
+          { name: { en: "Zaatar & Cheese", ar: "بيتزا زعتر وجبنة" }, price: "$3.00" }, 
+          { name: { en: "Pepperoni", ar: "بيبروني" }, price: "$3.50" }, 
+          { name: { en: "Vegetarian", ar: "خضار" }, price: "$4.00" } 
+        ] 
+      },
+      { en: "Special Add-ons", ar: "إضافات مميزة", items: [ 
+          { name: { en: "Chicken Shawarma", ar: "شاورما دجاج" }, price: "$4.00" }, 
+          { name: { en: "Meat Shawarma", ar: "شاورما لحمة" }, price: "$4.00" }, 
+          { name: { en: "Fajita", ar: "فاهيتا" }, price: "$4.00" }, 
+          { name: { en: "Mushroom & Cream", ar: "فطر وكريمة" }, price: "$4.00" } 
+        ] 
+      },
+      { en: "Desserts", ar: "ما مننـسى الحلويات", items: [ 
+          { name: { en: "Snickers Pie", ar: "منقوشة سنيكرز" }, price: "$4.00" }, 
+          { name: { en: "Mars Pie", ar: "منقوشة مارس" }, price: "$4.00" } 
+        ] 
+      }
     ];
 
     const menuSections = document.getElementById("menuSections");
 
-    menuData.forEach(section => {
-      const container = document.createElement("div");
-      container.className = "border rounded-lg p-4 shadow-sm";
+    function renderMenu() {
+      const isArabic = document.body.classList.contains("arabic");
+      menuSections.innerHTML = "";
 
-      const header = document.createElement("div");
-      header.className = "flex justify-between items-center cursor-pointer";
-      header.innerHTML = `
-        <h3 class="text-lg font-bold text-red-600">
-          <span data-lang="en">${section.en}</span>
-          <span data-lang="ar">${section.ar}</span>
-        </h3>
-        <span class="text-xl toggle-icon select-none">+</span>
-      `;
+      menuData.forEach(section => {
+        const container = document.createElement("div");
+        container.className = "border rounded-lg p-4 shadow-sm";
 
-      const list = document.createElement("ul");
-      list.className = "mt-2 hidden space-y-2 text-sm sm:text-base";
+        const header = document.createElement("div");
+        header.className = "flex justify-between items-center cursor-pointer";
+        header.innerHTML = `
+          <h3 class="text-lg font-bold text-red-600">
+            <span data-lang="en">${section.en}</span>
+            <span data-lang="ar">${section.ar}</span>
+          </h3>
+          <span class="text-xl toggle-icon select-none">+</span>
+        `;
 
-      section.items.forEach(item => {
-        const li = document.createElement("li");
-        li.className = "flex justify-between menu-item";
-        li.innerHTML = `<span>${item.name}</span><span>${item.price}</span>`;
-        list.appendChild(li);
+        const list = document.createElement("ul");
+        list.className = "mt-2 hidden space-y-2 text-sm sm:text-base";
+
+        section.items.forEach(item => {
+          const li = document.createElement("li");
+          li.className = "flex justify-between menu-item";
+          const itemName = isArabic ? (typeof item.name === "object" ? item.name.ar : item.name) : (typeof item.name === "object" ? item.name.en : item.name);
+          li.innerHTML = `<span>${itemName}</span><span>${item.price}</span>`;
+          list.appendChild(li);
+        });
+
+        header.addEventListener("click", () => {
+          const expanded = list.classList.contains("hidden");
+          list.classList.toggle("hidden");
+          header.querySelector(".toggle-icon").textContent = expanded ? "−" : "+";
+        });
+
+        container.appendChild(header);
+        container.appendChild(list);
+        menuSections.appendChild(container);
       });
-
-      header.addEventListener("click", () => {
-        const expanded = list.classList.contains("hidden");
-        list.classList.toggle("hidden");
-        header.querySelector(".toggle-icon").textContent = expanded ? "−" : "+";
-      });
-
-      container.appendChild(header);
-      container.appendChild(list);
-      menuSections.appendChild(container);
-    });
+    }
 
     document.getElementById("searchInput").addEventListener("input", function () {
       const query = this.value.toLowerCase();
@@ -176,6 +221,9 @@
         item.style.display = text.includes(query) ? "flex" : "none";
       });
     });
+
+    // Initial render on page load
+    renderMenu();
   </script>
 </body>
 </html>
