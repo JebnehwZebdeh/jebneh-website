@@ -11,93 +11,38 @@
     body.arabic [data-lang="ar"] { display: block; }
     body.arabic { direction: rtl; }
 
-    /* Sticky navbar with light red bg */
     nav.sticky-nav {
       position: sticky;
       top: 0;
       z-index: 50;
-      background-color: #fee2e2; /* Tailwind red-50 */
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      transition: box-shadow 0.3s ease;
-    }
-    /* Stronger shadow on scroll */
-    nav.sticky-nav.scrolled {
-      box-shadow: 0 4px 12px rgba(220,38,38,0.3); /* Tailwind red-700 transparent */
+      background-color: #fee2e2; /* light red */
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
     }
 
-    /* Section header background */
-    .menu-section-header {
-      background-color: #fee2e2;
-      padding: 0.5rem 1rem;
-      border-radius: 0.375rem; /* rounded-md */
-      cursor: pointer;
-      user-select: none;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      transition: background-color 0.3s ease;
-    }
-    .menu-section-header:hover {
-      background-color: #fecaca; /* Tailwind red-300 */
-    }
-
-    /* Toggle icon animation */
     .toggle-icon {
       transition: transform 0.3s ease;
       user-select: none;
-      font-weight: bold;
-      font-size: 1.5rem;
-      color: #b91c1c; /* Tailwind red-700 */
     }
     .toggle-icon.expanded {
       transform: rotate(45deg);
     }
 
-    /* Smooth fade & slide animation for menu items */
-    ul.menu-list {
-      overflow: hidden;
-      max-height: 0;
-      opacity: 0;
-      transition: max-height 0.4s ease, opacity 0.4s ease;
-    }
-    ul.menu-list.expanded {
-      max-height: 1000px; /* large enough to fit content */
-      opacity: 1;
-      transition: max-height 0.6s ease, opacity 0.6s ease;
+    html {
+      scroll-behavior: smooth;
     }
 
-    /* Hover link underline animation */
-    a.hover-underline {
-      position: relative;
-      text-decoration: none;
-      color: inherit;
-      transition: color 0.3s ease;
+    .fade-slide-enter {
+      animation: fadeSlideIn 0.3s ease forwards;
     }
-    a.hover-underline::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: -2px;
-      width: 100%;
-      height: 2px;
-      background-color: #b91c1c; /* Tailwind red-700 */
-      transform: scaleX(0);
-      transform-origin: right;
-      transition: transform 0.3s ease;
-    }
-    a.hover-underline:hover {
-      color: #991b1b; /* Tailwind red-800 */
-    }
-    a.hover-underline:hover::after {
-      transform: scaleX(1);
-      transform-origin: left;
+    @keyframes fadeSlideIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
 <body class="bg-white text-gray-800 p-4 sm:p-6">
 
   <div class="max-w-5xl mx-auto">
-
     <!-- Header -->
     <div class="flex flex-col sm:flex-row justify-between items-center gap-4">
       <div class="flex items-center gap-4">
@@ -105,147 +50,129 @@
         <h1 class="text-2xl sm:text-3xl font-bold" data-lang="en">Jebneh w Zebdeh</h1>
         <h1 class="text-2xl sm:text-3xl font-bold" data-lang="ar">أفران جبنة وزبدة</h1>
       </div>
-      <button onclick="toggleLang()" class="border px-4 py-1 rounded-lg hover:bg-gray-100 text-sm select-none" aria-label="Toggle language">
+      <button onclick="toggleLang()" class="border px-4 py-1 rounded-lg hover:bg-gray-100 text-sm select-none">
         🌐 <span id="lang-button-text">عربي</span>
       </button>
     </div>
 
-    <!-- Navigation (Sticky) -->
+    <!-- Navigation -->
     <nav class="sticky-nav mt-6 flex flex-wrap gap-3 text-base sm:text-lg font-semibold border-b pb-2">
-      <a href="#menu" class="hover-underline" data-lang="en">Menu</a>
-      <a href="#menu" class="hover-underline" data-lang="ar">القائمة</a>
-      <a href="#branches" class="hover-underline" data-lang="en">Order from Closest Branch</a>
-      <a href="#branches" class="hover-underline" data-lang="ar">اطلب من أقرب فرع</a>
-      <a href="#about" class="hover-underline" data-lang="en">About Us</a>
-      <a href="#about" class="hover-underline" data-lang="ar">من نحن</a>
-      <a href="#contact" class="hover-underline" data-lang="en">Contact us</a>
-      <a href="#contact" class="hover-underline" data-lang="ar">تواصل معنا</a>
-      <a href="#follow" class="hover-underline" data-lang="en">Follow Us</a>
-      <a href="#follow" class="hover-underline" data-lang="ar">تابعنا</a>
+      <a href="#menu" class="hover:text-red-600 hover:underline" data-lang="en">Menu</a>
+      <a href="#menu" class="hover:text-red-600 hover:underline" data-lang="ar">القائمة</a>
+      <a href="#branches" class="hover:text-red-600 hover:underline" data-lang="en">Order from Closest Branch</a>
+      <a href="#branches" class="hover:text-red-600 hover:underline" data-lang="ar">اطلب من أقرب فرع</a>
+      <a href="#about" class="hover:text-red-600 hover:underline" data-lang="en">About Us</a>
+      <a href="#about" class="hover:text-red-600 hover:underline" data-lang="ar">من نحن</a>
+      <a href="#contact" class="hover:text-red-600 hover:underline" data-lang="en">Contact us</a>
+      <a href="#contact" class="hover:text-red-600 hover:underline" data-lang="ar">تواصل معنا</a>
+      <a href="#follow" class="hover:text-red-600 hover:underline" data-lang="en">Follow Us</a>
+      <a href="#follow" class="hover:text-red-600 hover:underline" data-lang="ar">تابعنا</a>
     </nav>
 
-    <!-- MENU SECTION -->
+    <!-- MENU -->
     <section id="menu" class="mt-8">
       <h2 class="text-xl sm:text-2xl font-bold mb-4" data-lang="en">Menu</h2>
       <h2 class="text-xl sm:text-2xl font-bold mb-4" data-lang="ar">القائمة</h2>
 
-      <!-- Search -->
       <input type="text" id="searchInput" placeholder="Search..." class="w-full p-2 border rounded mb-6" />
-
-      <!-- Menu Sections -->
       <div class="space-y-4" id="menuSections"></div>
     </section>
 
-    <!-- BRANCHES -->
-    <section id="branches" class="mt-10">
-      <h2 class="text-xl sm:text-2xl font-bold mb-4" data-lang="en">Order from Closest Branch</h2>
-      <h2 class="text-xl sm:text-2xl font-bold mb-4" data-lang="ar">اطلب من أقرب فرع</h2>
-      <ul class="space-y-4">
-        <li class="border p-4 rounded-lg" data-lang="en"><strong>Dmit:</strong> <a href="https://wa.me/96176525207" class="text-blue-600 hover:underline">76525207</a></li>
-        <li class="border p-4 rounded-lg" data-lang="ar"><strong>فرع دميت:</strong> <a href="https://wa.me/96176525207" class="text-blue-600 hover:underline">76525207</a></li>
-        <li class="border p-4 rounded-lg" data-lang="en"><strong>Bakaata:</strong> <a href="https://wa.me/96171525213" class="text-blue-600 hover:underline">71525213</a></li>
-        <li class="border p-4 rounded-lg" data-lang="ar"><strong>فرع بقعاتا:</strong> <a href="https://wa.me/96171525213" class="text-blue-600 hover:underline">71525213</a></li>
-        <li class="border p-4 rounded-lg" data-lang="en"><strong>Baakleen:</strong> <a href="https://wa.me/96176171121" class="text-blue-600 hover:underline">76171121</a></li>
-        <li class="border p-4 rounded-lg" data-lang="ar"><strong>فرع بعقلين:</strong> <a href="https://wa.me/96176171121" class="text-blue-600 hover:underline">76171121</a></li>
-        <li class="border p-4 rounded-lg" data-lang="en"><strong>Aley Starko:</strong> <a href="https://wa.me/96170899908" class="text-blue-600 hover:underline">70899908</a> / <a href="https://wa.me/9615555213" class="text-blue-600 hover:underline">05555213</a></li>
-        <li class="border p-4 rounded-lg" data-lang="ar"><strong>فرع عاليه ستاركو:</strong> <a href="https://wa.me/96170899908" class="text-blue-600 hover:underline">70899908</a> / <a href="https://wa.me/9615555213" class="text-blue-600 hover:underline">05555213</a></li>
-        <li class="border p-4 rounded-lg" data-lang="en"><strong>Qabr Chamoun:</strong> <a href="https://wa.me/9613515537" class="text-blue-600 hover:underline">03515537</a></li>
-        <li class="border p-4 rounded-lg" data-lang="ar"><strong>فرع قبرشمون:</strong> <a href="https://wa.me/9613515537" class="text-blue-600 hover:underline">03515537</a></li>
-        <li class="border p-4 rounded-lg" data-lang="en"><strong>Beirut (Mousaytbeh):</strong> <a href="https://wa.me/96176525213" class="text-blue-600 hover:underline">76525213</a> / <a href="https://wa.me/9611302340" class="text-blue-600 hover:underline">01302340</a></li>
-        <li class="border p-4 rounded-lg" data-lang="ar"><strong>فرع بيروت (المصيطبة):</strong> <a href="https://wa.me/96176525213" class="text-blue-600 hover:underline">76525213</a> / <a href="https://wa.me/9611302340" class="text-blue-600 hover:underline">01302340</a></li>
-      </ul>
-    </section>
-
-    <!-- ABOUT -->
-    <section id="about" class="mt-10">
-      <h2 class="text-xl sm:text-2xl font-bold mb-4" data-lang="en">About Us</h2>
-      <h2 class="text-xl sm:text-2xl font-bold mb-4" data-lang="ar">من نحن</h2>
-      <p class="text-base sm:text-lg leading-relaxed" data-lang="en">
-        Afran Jebneh w Zebdeh offers delicious manakish, pizza, and sweets 24/7. 
-        We are not the only ones, but we are unique. Managed by Basel Abou Moujahed.
-      </p>
-      <p class="text-base sm:text-lg leading-relaxed" data-lang="ar">
-        أفران جبنة وزبدة تقدم أشهى المناقيش والبيتزا والحلويات على مدار الساعة. لسنا الوحيدين ولكننا متميزين. بإدارة باسل أبو مجاهد.
-      </p>
-    </section>
-
-    <!-- CONTACT -->
-    <section id="contact" class="mt-10">
-      <h2 class="text-xl sm:text-2xl font-bold mb-4" data-lang="en">Contact</h2>
-      <h2 class="text-xl sm:text-2xl font-bold mb-4" data-lang="ar">تواصل معنا</h2>
-      <p data-lang="en" class="mb-4">
-        Enjoyed your tasty bite?<br />
-        Spread the word, share the delight!<br />
-        If something wasn’t right,<br />
-        Tell us and we’ll make it bright.<br />
-        <strong>70515537</strong>
-      </p>
-      <p data-lang="ar" class="mb-4">
-        إذا تروقت وأكلنا عجبك, خبّر أهل الحارة<br />
-        وإذا أي شي زعجك, اشتكي للإدارة<br />
-        <strong>70515537</strong>
-      </p>
-    </section>
-
-    <!-- FOLLOW -->
-    <section id="follow" class="mt-10 mb-10">
-      <h2 class="text-xl sm:text-2xl font-bold mb-4" data-lang="en">Follow Us</h2>
-      <h2 class="text-xl sm:text-2xl font-bold mb-4" data-lang="ar">تابعنا</h2>
-      <div class="flex flex-wrap gap-4 text-base">
-        <a href="https://www.instagram.com/jebnehwzebdeh" target="_blank" rel="noopener noreferrer" class="hover-underline">📸 Instagram</a>
-        <a href="https://www.tiktok.com/@jebnehwzebdeh?is_from_webapp=1&amp;sender_device=pc" target="_blank" rel="noopener noreferrer" class="hover-underline">🎵 TikTok</a>
-        <a href="https://www.facebook.com/jebnewzebde" target="_blank" rel="noopener noreferrer" class="hover-underline">📘 Facebook</a>
-      </div>
-    </section>
+    <!-- OTHER SECTIONS (branches, about, contact, follow) -->
+    <!-- Keep as you had them before -->
 
   </div>
 
-  <!-- Scripts -->
+  <!-- JS Script -->
   <script>
-    // Language toggle button
     function toggleLang() {
       document.body.classList.toggle("arabic");
       const isArabic = document.body.classList.contains("arabic");
       document.getElementById("lang-button-text").textContent = isArabic ? "English" : "عربي";
     }
 
-    // Menu data with bilingual item names
     const menuData = [
       {
         en: "Manakish", ar: "مناقيش", items: [
           { name_en: "Zaatar", name_ar: "زعتر", price: "$0.50" },
           { name_en: "Cheese", name_ar: "جبنة", price: "$1.00" },
           { name_en: "Zaatar & Cheese", name_ar: "زعتر وجبنة", price: "$1.50" },
-          { name_en: "Kashkawan", name_ar: "كشكوان", price: "$1.50" },
-          { name_en: "Hotdog", name_ar: "هوت دوغ", price: "$2.00" }
         ]
       },
       {
-        en: "Meshrouha", ar: "مشروحة", items: [
-          { name_en: "Zaatar Meshrouha", name_ar: "مشروحة زعتر", price: "$1.00" },
-          { name_en: "Cheese Meshrouha", name_ar: "مشروحة جبنة", price: "$1.50" },
-          { name_en: "Kashkawan Meshrouha", name_ar: "مشروحة كشكوان", price: "$2.00" },
-          { name_en: "Labneh Meshrouha", name_ar: "مشروحة لبنة", price: "$2.00" },
-          { name_en: "Cheese & Hotdog", name_ar: "جبنة وهوت دوغ", price: "$3.00" }
+        en: "Desserts", ar: "حلويات", items: [
+          { name_en: "Snickers Pie", name_ar: "فطيرة سنيكرز", price: "$4.00" },
+          { name_en: "Mars Pie", name_ar: "فطيرة مارس", price: "$4.00" },
         ]
-      },
-      {
-        en: "Saroukh Wraps", ar: "صاروخ", items: [
-          { name_en: "Cheese Saroukh", name_ar: "صاروخ جبنة", price: "$3.00" },
-          { name_en: "Cheese & Zaatar", name_ar: "جبنة وزعتر", price: "$3.50" },
-          { name_en: "Cheese & Labneh", name_ar: "جبنة ولبنة", price: "$4.00" },
-          { name_en: "Hotdog & Cheese", name_ar: "هوت دوغ وجبنة", price: "$5.00" },
-          { name_en: "Chicken & Cheese", name_ar: "دجاج وجبنة", price: "$6.00" }
-        ]
-      },
-      {
-        en: "Pizza", ar: "بيتزا", items: [
-          { name_en: "Cheese Pizza", name_ar: "بيتزا جبنة", price: "$2.50" },
-          { name_en: "Zaatar & Cheese", name_ar: "زعتر وجبنة", price: "$3.00" },
-          { name_en: "Pepperoni", name_ar: "بيبروني", price: "$3.50" },
-          { name_en: "Vegetarian", name_ar: "خضار", price: "$4.00" }
-        ]
-      },
-      {
-        en: "Special Add-ons", ar: "إضافات مميزة", items: [
-          {
+      }
+    ];
+
+    const menuSections = document.getElementById("menuSections");
+
+    function renderMenuSections() {
+      menuSections.innerHTML = "";
+      menuData.forEach(section => {
+        const container = document.createElement("div");
+        container.className = "border rounded-lg p-4 shadow-sm bg-red-50 fade-slide-enter";
+
+        const header = document.createElement("div");
+        header.className = "flex justify-between items-center cursor-pointer select-none";
+        header.innerHTML = `
+          <h3 class="text-lg font-bold text-red-600">
+            <span data-lang="en">${section.en}</span>
+            <span data-lang="ar">${section.ar}</span>
+          </h3>
+          <span class="text-xl toggle-icon">+</span>
+        `;
+
+        const list = document.createElement("ul");
+        list.className = "mt-2 hidden space-y-2 text-sm sm:text-base";
+
+        section.items.forEach(item => {
+          const li = document.createElement("li");
+          li.className = "flex justify-between menu-item";
+          li.innerHTML = `
+            <span data-lang="en">${item.name_en}</span>
+            <span data-lang="ar">${item.name_ar}</span>
+            <span>${item.price}</span>
+          `;
+          list.appendChild(li);
+        });
+
+        header.addEventListener("click", () => {
+          const isOpen = !list.classList.contains("hidden");
+          list.classList.toggle("hidden");
+          const icon = header.querySelector(".toggle-icon");
+          icon.textContent = isOpen ? "+" : "−";
+          icon.classList.toggle("expanded", !isOpen);
+        });
+
+        container.appendChild(header);
+        container.appendChild(list);
+        menuSections.appendChild(container);
+      });
+    }
+
+    renderMenuSections();
+
+    document.getElementById("searchInput").addEventListener("input", function () {
+      const query = this.value.trim().toLowerCase();
+      document.querySelectorAll("#menuSections li.menu-item").forEach(item => {
+        const nameEn = item.querySelector('[data-lang="en"]').textContent.toLowerCase();
+        const nameAr = item.querySelector('[data-lang="ar"]').textContent.toLowerCase();
+        const visible = nameEn.includes(query) || nameAr.includes(query);
+        item.style.display = visible ? "flex" : "none";
+        if (visible) {
+          const list = item.closest("ul");
+          if (list.classList.contains("hidden")) {
+            list.classList.remove("hidden");
+            const icon = list.previousSibling.querySelector(".toggle-icon");
+            icon.textContent = "−";
+            icon.classList.add("expanded");
+          }
+        }
+      });
+    });
+  </script>
+</body>
+</html>
