@@ -1,33 +1,58 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Jebneh w Zebdeh</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
   <style>
     [data-lang="ar"] { display: none; direction: rtl; text-align: right; }
     body.arabic [data-lang="en"] { display: none; }
     body.arabic [data-lang="ar"] { display: block; }
+    body.arabic { direction: rtl; }
+    
+    /* Sticky navbar */
+    nav.sticky-nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background-color: white;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    /* Toggle icon animation */
+    .toggle-icon {
+      transition: transform 0.3s ease;
+      user-select: none;
+    }
+    .toggle-icon.expanded {
+      transform: rotate(45deg);
+    }
+
+    /* Smooth scroll */
+    html {
+      scroll-behavior: smooth;
+    }
   </style>
 </head>
 <body class="bg-white text-gray-800 p-4 sm:p-6">
+
   <div class="max-w-5xl mx-auto">
 
     <!-- Header -->
     <div class="flex flex-col sm:flex-row justify-between items-center gap-4">
       <div class="flex items-center gap-4">
-        <img src="logo.png" alt="Logo" class="w-14 h-14">
+        <img src="logo.png" alt="Logo" class="w-14 h-14" />
         <h1 class="text-2xl sm:text-3xl font-bold" data-lang="en">Jebneh w Zebdeh</h1>
         <h1 class="text-2xl sm:text-3xl font-bold" data-lang="ar">أفران جبنة وزبدة</h1>
       </div>
-      <button onclick="toggleLang()" class="border px-4 py-1 rounded-lg hover:bg-gray-100 text-sm">
+      <button onclick="toggleLang()" class="border px-4 py-1 rounded-lg hover:bg-gray-100 text-sm select-none" aria-label="Toggle language">
         🌐 <span id="lang-button-text">عربي</span>
       </button>
     </div>
 
-    <!-- Navigation -->
-    <div class="mt-6 flex flex-wrap gap-3 text-base sm:text-lg font-semibold border-b pb-2">
+    <!-- Navigation (Sticky) -->
+    <nav class="sticky-nav mt-6 flex flex-wrap gap-3 text-base sm:text-lg font-semibold border-b pb-2">
       <a href="#menu" class="hover:text-red-600" data-lang="en">Menu</a>
       <a href="#menu" class="hover:text-red-600" data-lang="ar">القائمة</a>
       <a href="#branches" class="hover:text-red-600" data-lang="en">Order from Closest Branch</a>
@@ -38,10 +63,10 @@
       <a href="#contact" class="hover:text-red-600" data-lang="ar">تواصل معنا</a>
       <a href="#follow" class="hover:text-red-600" data-lang="en">Follow Us</a>
       <a href="#follow" class="hover:text-red-600" data-lang="ar">تابعنا</a>
-    </div>
+    </nav>
 
     <!-- MENU SECTION -->
-    <div id="menu" class="mt-8">
+    <section id="menu" class="mt-8">
       <h2 class="text-xl sm:text-2xl font-bold mb-4" data-lang="en">Menu</h2>
       <h2 class="text-xl sm:text-2xl font-bold mb-4" data-lang="ar">القائمة</h2>
 
@@ -50,10 +75,10 @@
 
       <!-- Menu Sections -->
       <div class="space-y-4" id="menuSections"></div>
-    </div>
+    </section>
 
     <!-- BRANCHES -->
-    <div id="branches" class="mt-10">
+    <section id="branches" class="mt-10">
       <h2 class="text-xl sm:text-2xl font-bold mb-4" data-lang="en">Order from Closest Branch</h2>
       <h2 class="text-xl sm:text-2xl font-bold mb-4" data-lang="ar">اطلب من أقرب فرع</h2>
       <ul class="space-y-4">
@@ -70,10 +95,10 @@
         <li class="border p-4 rounded-lg" data-lang="en"><strong>Beirut (Mousaytbeh):</strong> <a href="https://wa.me/96176525213" class="text-blue-600 hover:underline">76525213</a> / <a href="https://wa.me/9611302340" class="text-blue-600 hover:underline">01302340</a></li>
         <li class="border p-4 rounded-lg" data-lang="ar"><strong>فرع بيروت (المصيطبة):</strong> <a href="https://wa.me/96176525213" class="text-blue-600 hover:underline">76525213</a> / <a href="https://wa.me/9611302340" class="text-blue-600 hover:underline">01302340</a></li>
       </ul>
-    </div>
+    </section>
 
     <!-- ABOUT -->
-    <div id="about" class="mt-10">
+    <section id="about" class="mt-10">
       <h2 class="text-xl sm:text-2xl font-bold mb-4" data-lang="en">About Us</h2>
       <h2 class="text-xl sm:text-2xl font-bold mb-4" data-lang="ar">من نحن</h2>
       <p class="text-base sm:text-lg leading-relaxed" data-lang="en">
@@ -83,97 +108,179 @@
       <p class="text-base sm:text-lg leading-relaxed" data-lang="ar">
         أفران جبنة وزبدة تقدم أشهى المناقيش والبيتزا والحلويات على مدار الساعة. لسنا الوحيدين ولكننا متميزين. بإدارة باسل أبو مجاهد.
       </p>
-    </div>
+    </section>
 
     <!-- CONTACT -->
-    <div id="contact" class="mt-10">
+    <section id="contact" class="mt-10">
       <h2 class="text-xl sm:text-2xl font-bold mb-4" data-lang="en">Contact</h2>
       <h2 class="text-xl sm:text-2xl font-bold mb-4" data-lang="ar">تواصل معنا</h2>
       <p data-lang="en" class="mb-4">
-        Enjoyed your tasty bite?<br/>
-        Spread the word, share the delight!<br/>
-        If something wasn’t right,<br/>
-        Tell us and we’ll make it bright.<br/>
+        Enjoyed your tasty bite?<br />
+        Spread the word, share the delight!<br />
+        If something wasn’t right,<br />
+        Tell us and we’ll make it bright.<br />
         <strong>70515537</strong>
       </p>
       <p data-lang="ar" class="mb-4">
-        إذا تروقت وأكلنا عجبك, خبّر أهل الحارة<br/>
-        وإذا أي شي زعجك, اشتكي للإدارة<br/>
+        إذا تروقت وأكلنا عجبك, خبّر أهل الحارة<br />
+        وإذا أي شي زعجك, اشتكي للإدارة<br />
         <strong>70515537</strong>
       </p>
-    </div>
+    </section>
 
     <!-- FOLLOW -->
-    <div id="follow" class="mt-10 mb-10">
+    <section id="follow" class="mt-10 mb-10">
       <h2 class="text-xl sm:text-2xl font-bold mb-4" data-lang="en">Follow Us</h2>
       <h2 class="text-xl sm:text-2xl font-bold mb-4" data-lang="ar">تابعنا</h2>
       <div class="flex flex-wrap gap-4 text-base">
-        <a href="https://www.instagram.com/jebnehwzebdeh" target="_blank" class="hover:text-red-600">📸 Instagram</a>
-        <a href="https://www.tiktok.com/@jebnehwzebdeh?is_from_webapp=1&sender_device=pc" target="_blank" class="hover:text-red-600">🎵 TikTok</a>
-        <a href="https://www.facebook.com/jebnewzebde" target="_blank" class="hover:text-red-600">📘 Facebook</a>
+        <a href="https://www.instagram.com/jebnehwzebdeh" target="_blank" rel="noopener noreferrer" class="hover:text-red-600">📸 Instagram</a>
+        <a href="https://www.tiktok.com/@jebnehwzebdeh?is_from_webapp=1&amp;sender_device=pc" target="_blank" rel="noopener noreferrer" class="hover:text-red-600">🎵 TikTok</a>
+        <a href="https://www.facebook.com/jebnewzebde" target="_blank" rel="noopener noreferrer" class="hover:text-red-600">📘 Facebook</a>
       </div>
-    </div>
+    </section>
+
   </div>
 
-  <!-- Language & Menu Scripts -->
+  <!-- Scripts -->
   <script>
+    // Language toggle button
     function toggleLang() {
       document.body.classList.toggle("arabic");
       const isArabic = document.body.classList.contains("arabic");
       document.getElementById("lang-button-text").textContent = isArabic ? "English" : "عربي";
     }
 
+    // Menu data with bilingual item names
     const menuData = [
-      { en: "Manakish", ar: "مناقيش", items: [ { name: "Zaatar", price: "$0.50" }, { name: "Cheese", price: "$1.00" }, { name: "Zaatar & Cheese", price: "$1.50" }, { name: "Kashkawan", price: "$1.50" }, { name: "Hotdog", price: "$2.00" } ] },
-      { en: "Meshrouha", ar: "مشروحة", items: [ { name: "Zaatar Meshrouha", price: "$1.00" }, { name: "Cheese Meshrouha", price: "$1.50" }, { name: "Kashkawan Meshrouha", price: "$2.00" }, { name: "Labneh Meshrouha", price: "$2.00" }, { name: "Cheese & Hotdog", price: "$3.00" } ] },
-      { en: "Saroukh Wraps", ar: "صاروخ", items: [ { name: "Cheese Saroukh", price: "$3.00" }, { name: "Cheese & Zaatar", price: "$3.50" }, { name: "Cheese & Labneh", price: "$4.00" }, { name: "Hotdog & Cheese", price: "$5.00" }, { name: "Chicken & Cheese", price: "$6.00" } ] },
-      { en: "Pizza", ar: "بيتزا", items: [ { name: "Cheese Pizza", price: "$2.50" }, { name: "Zaatar & Cheese", price: "$3.00" }, { name: "Pepperoni", price: "$3.50" }, { name: "Vegetarian", price: "$4.00" } ] },
-      { en: "Special Add-ons", ar: "إضافات مميزة", items: [ { name: "Chicken Shawarma", price: "$4.00" }, { name: "Meat Shawarma", price: "$4.00" }, { name: "Fajita", price: "$4.00" }, { name: "Mushroom & Cream", price: "$4.00" } ] },
-      { en: "Desserts", ar: "ما مننـسى الحلويات", items: [ { name: "Snickers Pie", price: "$4.00" }, { name: "Mars Pie", price: "$4.00" } ] }
+      {
+        en: "Manakish", ar: "مناقيش", items: [
+          { name_en: "Zaatar", name_ar: "زعتر", price: "$0.50" },
+          { name_en: "Cheese", name_ar: "جبنة", price: "$1.00" },
+          { name_en: "Zaatar & Cheese", name_ar: "زعتر وجبنة", price: "$1.50" },
+          { name_en: "Kashkawan", name_ar: "كشكوان", price: "$1.50" },
+          { name_en: "Hotdog", name_ar: "هوت دوغ", price: "$2.00" }
+        ]
+      },
+      {
+        en: "Meshrouha", ar: "مشروحة", items: [
+          { name_en: "Zaatar Meshrouha", name_ar: "مشروحة زعتر", price: "$1.00" },
+          { name_en: "Cheese Meshrouha", name_ar: "مشروحة جبنة", price: "$1.50" },
+          { name_en: "Kashkawan Meshrouha", name_ar: "مشروحة كشكوان", price: "$2.00" },
+          { name_en: "Labneh Meshrouha", name_ar: "مشروحة لبنة", price: "$2.00" },
+          { name_en: "Cheese & Hotdog", name_ar: "جبنة وهوت دوغ", price: "$3.00" }
+        ]
+      },
+      {
+        en: "Saroukh Wraps", ar: "صاروخ", items: [
+          { name_en: "Cheese Saroukh", name_ar: "صاروخ جبنة", price: "$3.00" },
+          { name_en: "Cheese & Zaatar", name_ar: "جبنة وزعتر", price: "$3.50" },
+          { name_en: "Cheese & Labneh", name_ar: "جبنة ولبنة", price: "$4.00" },
+          { name_en: "Hotdog & Cheese", name_ar: "هوت دوغ وجبنة", price: "$5.00" },
+          { name_en: "Chicken & Cheese", name_ar: "دجاج وجبنة", price: "$6.00" }
+        ]
+      },
+      {
+        en: "Pizza", ar: "بيتزا", items: [
+          { name_en: "Cheese Pizza", name_ar: "بيتزا جبنة", price: "$2.50" },
+          { name_en: "Zaatar & Cheese", name_ar: "زعتر وجبنة", price: "$3.00" },
+          { name_en: "Pepperoni", name_ar: "بيبروني", price: "$3.50" },
+          { name_en: "Vegetarian", name_ar: "خضار", price: "$4.00" }
+        ]
+      },
+      {
+        en: "Special Add-ons", ar: "إضافات مميزة", items: [
+          { name_en: "Chicken Shawarma", name_ar: "شاورما دجاج", price: "$4.00" },
+          { name_en: "Meat Shawarma", name_ar: "شاورما لحم", price: "$4.00" },
+          { name_en: "Fajita", name_ar: "فاهيتا", price: "$4.00" },
+          { name_en: "Mushroom & Cream", name_ar: "فطر وكريمة", price: "$4.00" }
+        ]
+      },
+      {
+        en: "Desserts", ar: "ما مننـسى الحلويات", items: [
+          { name_en: "Snickers Pie", name_ar: "فطيرة سنيكرز", price: "$4.00" },
+          { name_en: "Mars Pie", name_ar: "فطيرة مارس", price: "$4.00" }
+        ]
+      }
     ];
 
     const menuSections = document.getElementById("menuSections");
 
-    menuData.forEach(section => {
-      const container = document.createElement("div");
-      container.className = "border rounded-lg p-4 shadow-sm";
+    function renderMenuSections() {
+      menuSections.innerHTML = "";
+      menuData.forEach(section => {
+        const container = document.createElement("div");
+        container.className = "border rounded-lg p-4 shadow-sm";
 
-      const header = document.createElement("div");
-      header.className = "flex justify-between items-center cursor-pointer";
-      header.innerHTML = `
-        <h3 class="text-lg font-bold text-red-600">
-          <span data-lang="en">${section.en}</span>
-          <span data-lang="ar">${section.ar}</span>
-        </h3>
-        <span class="text-xl toggle-icon select-none">+</span>
-      `;
+        const header = document.createElement("div");
+        header.className = "flex justify-between items-center cursor-pointer select-none";
+        header.innerHTML = `
+          <h3 class="text-lg font-bold text-red-600">
+            <span data-lang="en">${section.en}</span>
+            <span data-lang="ar">${section.ar}</span>
+          </h3>
+          <span class="text-xl toggle-icon">+</span>
+        `;
 
-      const list = document.createElement("ul");
-      list.className = "mt-2 hidden space-y-2 text-sm sm:text-base";
+        const list = document.createElement("ul");
+        list.className = "mt-2 hidden space-y-2 text-sm sm:text-base";
 
-      section.items.forEach(item => {
-        const li = document.createElement("li");
-        li.className = "flex justify-between menu-item";
-        li.innerHTML = `<span>${item.name}</span><span>${item.price}</span>`;
-        list.appendChild(li);
+        section.items.forEach(item => {
+          const li = document.createElement("li");
+          li.className = "flex justify-between menu-item";
+          li.innerHTML = `
+            <span data-lang="en">${item.name_en}</span>
+            <span data-lang="ar">${item.name_ar}</span>
+            <span>${item.price}</span>
+          `;
+          list.appendChild(li);
+        });
+
+        header.addEventListener("click", () => {
+          const expanded = list.classList.toggle("hidden");
+          const icon = header.querySelector(".toggle-icon");
+          if (expanded) {
+            icon.textContent = "−";
+            icon.classList.add("expanded");
+          } else {
+            icon.textContent = "+";
+            icon.classList.remove("expanded");
+          }
+        });
+
+        container.appendChild(header);
+        container.appendChild(list);
+        menuSections.appendChild(container);
       });
+    }
 
-      header.addEventListener("click", () => {
-        const expanded = list.classList.contains("hidden");
-        list.classList.toggle("hidden");
-        header.querySelector(".toggle-icon").textContent = expanded ? "−" : "+";
-      });
+    renderMenuSections();
 
-      container.appendChild(header);
-      container.appendChild(list);
-      menuSections.appendChild(container);
-    });
-
+    // Search input event
     document.getElementById("searchInput").addEventListener("input", function () {
-      const query = this.value.toLowerCase();
+      const query = this.value.trim().toLowerCase();
       document.querySelectorAll("#menuSections li.menu-item").forEach(item => {
-        const text = item.textContent.toLowerCase();
-        item.style.display = text.includes(query) ? "flex" : "none";
+        // get English and Arabic text
+        const nameEn = item.querySelector('[data-lang="en"]').textContent.toLowerCase();
+        const nameAr = item.querySelector('[data-lang="ar"]').textContent.toLowerCase();
+        const priceText = item.querySelector('span:last-child').textContent.toLowerCase();
+
+        // Show if either language contains query
+        if (nameEn.includes(query) || nameAr.includes(query)) {
+          item.style.display = "flex";
+          // Make sure parent section is expanded to see matches
+          const list = item.parentElement;
+          if (list.classList.contains("hidden")) {
+            list.classList.remove("hidden");
+            const header = list.previousSibling;
+            if (header) {
+              const icon = header.querySelector(".toggle-icon");
+              icon.textContent = "−";
+              icon.classList.add("expanded");
+            }
+          }
+        } else {
+          item.style.display = "none";
+        }
       });
     });
   </script>
