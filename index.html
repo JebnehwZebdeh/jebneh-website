@@ -42,7 +42,7 @@
 </head>
 <body class="bg-white text-gray-800 p-4 sm:p-6">
   <div class="max-w-5xl mx-auto">
-    <!-- Header and Navigation remain unchanged -->
+    <!-- Header and Navigation -->
     <div class="flex flex-col sm:flex-row justify-between items-center gap-4">
       <div class="flex items-center gap-4">
         <img src="logo.png" alt="Logo" class="w-14 h-14" />
@@ -74,10 +74,23 @@
       <div class="space-y-4" id="menuSections"></div>
     </section>
 
-    <!-- Rest of your content remains the same -->
     <section id="branches" class="mt-10">
       <h2 class="text-xl sm:text-2xl font-bold mb-4" data-lang="en">Order from Closest Branch</h2>
       <h2 class="text-xl sm:text-2xl font-bold mb-4" data-lang="ar">اطلب من أقرب فرع</h2>
+      <ul class="space-y-4">
+        <li class="border p-4 rounded-lg" data-lang="en"><strong>Dmit:</strong> <a href="https://wa.me/96176525207" class="text-blue-600 hover:underline">76525207</a></li>
+        <li class="border p-4 rounded-lg" data-lang="ar"><strong>فرع دميت:</strong> <a href="https://wa.me/96176525207" class="text-blue-600 hover:underline">76525207</a></li>
+        <li class="border p-4 rounded-lg" data-lang="en"><strong>Bakaata:</strong> <a href="https://wa.me/96171525213" class="text-blue-600 hover:underline">71525213</a></li>
+        <li class="border p-4 rounded-lg" data-lang="ar"><strong>فرع بقعاتا:</strong> <a href="https://wa.me/96171525213" class="text-blue-600 hover:underline">71525213</a></li>
+        <li class="border p-4 rounded-lg" data-lang="en"><strong>Baakleen:</strong> <a href="https://wa.me/96176171121" class="text-blue-600 hover:underline">76171121</a></li>
+        <li class="border p-4 rounded-lg" data-lang="ar"><strong>فرع بعقلين:</strong> <a href="https://wa.me/96176171121" class="text-blue-600 hover:underline">76171121</a></li>
+        <li class="border p-4 rounded-lg" data-lang="en"><strong>Aley Starko:</strong> <a href="https://wa.me/96170899908" class="text-blue-600 hover:underline">70899908</a> / <a href="https://wa.me/9615555213" class="text-blue-600 hover:underline">05555213</a></li>
+        <li class="border p-4 rounded-lg" data-lang="ar"><strong>فرع عاليه ستاركو:</strong> <a href="https://wa.me/96170899908" class="text-blue-600 hover:underline">70899908</a> / <a href="https://wa.me/9615555213" class="text-blue-600 hover:underline">05555213</a></li>
+        <li class="border p-4 rounded-lg" data-lang="en"><strong>Qabr Chamoun:</strong> <a href="https://wa.me/9613515537" class="text-blue-600 hover:underline">03515537</a></li>
+        <li class="border p-4 rounded-lg" data-lang="ar"><strong>فرع قبرشمون:</strong> <a href="https://wa.me/9613515537" class="text-blue-600 hover:underline">03515537</a></li>
+        <li class="border p-4 rounded-lg" data-lang="en"><strong>Beirut (Mousaytbeh):</strong> <a href="https://wa.me/96176525213" class="text-blue-600 hover:underline">76525213</a> / <a href="https://wa.me/9611302340" class="text-blue-600 hover:underline">01302340</a></li>
+        <li class="border p-4 rounded-lg" data-lang="ar"><strong>فرع بيروت (المصيطبة):</strong> <a href="https://wa.me/96176525213" class="text-blue-600 hover:underline">76525213</a> / <a href="https://wa.me/9611302340" class="text-blue-600 hover:underline">01302340</a></li>
+      </ul>
     </section>
 
     <section id="about" class="mt-10">
@@ -120,7 +133,7 @@
     </section>
   </div>
 
-  <!-- FULL RESTORED JS -->
+  <!-- Restored JS for Full Menu -->
   <script>
     function toggleLang() {
       document.body.classList.toggle("arabic");
@@ -143,11 +156,28 @@
         { name: "Labneh Meshrouha", price: "$2.00" },
         { name: "Cheese & Hotdog", price: "$3.00" }
       ] },
+      { en: "Saroukh Wraps", ar: "صاروخ", items: [
+        { name: "Cheese Saroukh", price: "$3.00" },
+        { name: "Cheese & Zaatar", price: "$3.50" },
+        { name: "Cheese & Labneh", price: "$4.00" },
+        { name: "Hotdog & Cheese", price: "$5.00" },
+        { name: "Chicken & Cheese", price: "$6.00" }
+      ] },
       { en: "Pizza", ar: "بيتزا", items: [
         { name: "Cheese Pizza", price: "$2.50" },
         { name: "Zaatar & Cheese", price: "$3.00" },
         { name: "Pepperoni", price: "$3.50" },
         { name: "Vegetarian", price: "$4.00" }
+      ] },
+      { en: "Special Add-ons", ar: "إضافات مميزة", items: [
+        { name: "Chicken Shawarma", price: "$4.00" },
+        { name: "Meat Shawarma", price: "$4.00" },
+        { name: "Fajita", price: "$4.00" },
+        { name: "Mushroom & Cream", price: "$4.00" }
+      ] },
+      { en: "Desserts", ar: "ما مننـسى الحلويات", items: [
+        { name: "Snickers Pie", price: "$4.00" },
+        { name: "Mars Pie", price: "$4.00" }
       ] }
     ];
 
