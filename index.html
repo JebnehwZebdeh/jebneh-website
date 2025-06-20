@@ -10,28 +10,87 @@
     body.arabic [data-lang="en"] { display: none; }
     body.arabic [data-lang="ar"] { display: block; }
     body.arabic { direction: rtl; }
-    
-    /* Sticky navbar */
+
+    /* Sticky navbar with light red bg */
     nav.sticky-nav {
       position: sticky;
       top: 0;
       z-index: 50;
-      background-color: white;
+      background-color: #fee2e2; /* Tailwind red-50 */
       box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      transition: box-shadow 0.3s ease;
+    }
+    /* Stronger shadow on scroll */
+    nav.sticky-nav.scrolled {
+      box-shadow: 0 4px 12px rgba(220,38,38,0.3); /* Tailwind red-700 transparent */
+    }
+
+    /* Section header background */
+    .menu-section-header {
+      background-color: #fee2e2;
+      padding: 0.5rem 1rem;
+      border-radius: 0.375rem; /* rounded-md */
+      cursor: pointer;
+      user-select: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background-color 0.3s ease;
+    }
+    .menu-section-header:hover {
+      background-color: #fecaca; /* Tailwind red-300 */
     }
 
     /* Toggle icon animation */
     .toggle-icon {
       transition: transform 0.3s ease;
       user-select: none;
+      font-weight: bold;
+      font-size: 1.5rem;
+      color: #b91c1c; /* Tailwind red-700 */
     }
     .toggle-icon.expanded {
       transform: rotate(45deg);
     }
 
-    /* Smooth scroll */
-    html {
-      scroll-behavior: smooth;
+    /* Smooth fade & slide animation for menu items */
+    ul.menu-list {
+      overflow: hidden;
+      max-height: 0;
+      opacity: 0;
+      transition: max-height 0.4s ease, opacity 0.4s ease;
+    }
+    ul.menu-list.expanded {
+      max-height: 1000px; /* large enough to fit content */
+      opacity: 1;
+      transition: max-height 0.6s ease, opacity 0.6s ease;
+    }
+
+    /* Hover link underline animation */
+    a.hover-underline {
+      position: relative;
+      text-decoration: none;
+      color: inherit;
+      transition: color 0.3s ease;
+    }
+    a.hover-underline::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -2px;
+      width: 100%;
+      height: 2px;
+      background-color: #b91c1c; /* Tailwind red-700 */
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 0.3s ease;
+    }
+    a.hover-underline:hover {
+      color: #991b1b; /* Tailwind red-800 */
+    }
+    a.hover-underline:hover::after {
+      transform: scaleX(1);
+      transform-origin: left;
     }
   </style>
 </head>
@@ -53,16 +112,16 @@
 
     <!-- Navigation (Sticky) -->
     <nav class="sticky-nav mt-6 flex flex-wrap gap-3 text-base sm:text-lg font-semibold border-b pb-2">
-      <a href="#menu" class="hover:text-red-600" data-lang="en">Menu</a>
-      <a href="#menu" class="hover:text-red-600" data-lang="ar">القائمة</a>
-      <a href="#branches" class="hover:text-red-600" data-lang="en">Order from Closest Branch</a>
-      <a href="#branches" class="hover:text-red-600" data-lang="ar">اطلب من أقرب فرع</a>
-      <a href="#about" class="hover:text-red-600" data-lang="en">About Us</a>
-      <a href="#about" class="hover:text-red-600" data-lang="ar">من نحن</a>
-      <a href="#contact" class="hover:text-red-600" data-lang="en">Contact us</a>
-      <a href="#contact" class="hover:text-red-600" data-lang="ar">تواصل معنا</a>
-      <a href="#follow" class="hover:text-red-600" data-lang="en">Follow Us</a>
-      <a href="#follow" class="hover:text-red-600" data-lang="ar">تابعنا</a>
+      <a href="#menu" class="hover-underline" data-lang="en">Menu</a>
+      <a href="#menu" class="hover-underline" data-lang="ar">القائمة</a>
+      <a href="#branches" class="hover-underline" data-lang="en">Order from Closest Branch</a>
+      <a href="#branches" class="hover-underline" data-lang="ar">اطلب من أقرب فرع</a>
+      <a href="#about" class="hover-underline" data-lang="en">About Us</a>
+      <a href="#about" class="hover-underline" data-lang="ar">من نحن</a>
+      <a href="#contact" class="hover-underline" data-lang="en">Contact us</a>
+      <a href="#contact" class="hover-underline" data-lang="ar">تواصل معنا</a>
+      <a href="#follow" class="hover-underline" data-lang="en">Follow Us</a>
+      <a href="#follow" class="hover-underline" data-lang="ar">تابعنا</a>
     </nav>
 
     <!-- MENU SECTION -->
@@ -133,9 +192,9 @@
       <h2 class="text-xl sm:text-2xl font-bold mb-4" data-lang="en">Follow Us</h2>
       <h2 class="text-xl sm:text-2xl font-bold mb-4" data-lang="ar">تابعنا</h2>
       <div class="flex flex-wrap gap-4 text-base">
-        <a href="https://www.instagram.com/jebnehwzebdeh" target="_blank" rel="noopener noreferrer" class="hover:text-red-600">📸 Instagram</a>
-        <a href="https://www.tiktok.com/@jebnehwzebdeh?is_from_webapp=1&amp;sender_device=pc" target="_blank" rel="noopener noreferrer" class="hover:text-red-600">🎵 TikTok</a>
-        <a href="https://www.facebook.com/jebnewzebde" target="_blank" rel="noopener noreferrer" class="hover:text-red-600">📘 Facebook</a>
+        <a href="https://www.instagram.com/jebnehwzebdeh" target="_blank" rel="noopener noreferrer" class="hover-underline">📸 Instagram</a>
+        <a href="https://www.tiktok.com/@jebnehwzebdeh?is_from_webapp=1&amp;sender_device=pc" target="_blank" rel="noopener noreferrer" class="hover-underline">🎵 TikTok</a>
+        <a href="https://www.facebook.com/jebnewzebde" target="_blank" rel="noopener noreferrer" class="hover-underline">📘 Facebook</a>
       </div>
     </section>
 
@@ -189,100 +248,4 @@
       },
       {
         en: "Special Add-ons", ar: "إضافات مميزة", items: [
-          { name_en: "Chicken Shawarma", name_ar: "شاورما دجاج", price: "$4.00" },
-          { name_en: "Meat Shawarma", name_ar: "شاورما لحم", price: "$4.00" },
-          { name_en: "Fajita", name_ar: "فاهيتا", price: "$4.00" },
-          { name_en: "Mushroom & Cream", name_ar: "فطر وكريمة", price: "$4.00" }
-        ]
-      },
-      {
-        en: "Desserts", ar: "ما مننـسى الحلويات", items: [
-          { name_en: "Snickers Pie", name_ar: "فطيرة سنيكرز", price: "$4.00" },
-          { name_en: "Mars Pie", name_ar: "فطيرة مارس", price: "$4.00" }
-        ]
-      }
-    ];
-
-    const menuSections = document.getElementById("menuSections");
-
-    function renderMenuSections() {
-      menuSections.innerHTML = "";
-      menuData.forEach(section => {
-        const container = document.createElement("div");
-        container.className = "border rounded-lg p-4 shadow-sm";
-
-        const header = document.createElement("div");
-        header.className = "flex justify-between items-center cursor-pointer select-none";
-        header.innerHTML = `
-          <h3 class="text-lg font-bold text-red-600">
-            <span data-lang="en">${section.en}</span>
-            <span data-lang="ar">${section.ar}</span>
-          </h3>
-          <span class="text-xl toggle-icon">+</span>
-        `;
-
-        const list = document.createElement("ul");
-        list.className = "mt-2 hidden space-y-2 text-sm sm:text-base";
-
-        section.items.forEach(item => {
-          const li = document.createElement("li");
-          li.className = "flex justify-between menu-item";
-          li.innerHTML = `
-            <span data-lang="en">${item.name_en}</span>
-            <span data-lang="ar">${item.name_ar}</span>
-            <span>${item.price}</span>
-          `;
-          list.appendChild(li);
-        });
-
-        header.addEventListener("click", () => {
-          const expanded = list.classList.toggle("hidden");
-          const icon = header.querySelector(".toggle-icon");
-          if (expanded) {
-            icon.textContent = "−";
-            icon.classList.add("expanded");
-          } else {
-            icon.textContent = "+";
-            icon.classList.remove("expanded");
-          }
-        });
-
-        container.appendChild(header);
-        container.appendChild(list);
-        menuSections.appendChild(container);
-      });
-    }
-
-    renderMenuSections();
-
-    // Search input event
-    document.getElementById("searchInput").addEventListener("input", function () {
-      const query = this.value.trim().toLowerCase();
-      document.querySelectorAll("#menuSections li.menu-item").forEach(item => {
-        // get English and Arabic text
-        const nameEn = item.querySelector('[data-lang="en"]').textContent.toLowerCase();
-        const nameAr = item.querySelector('[data-lang="ar"]').textContent.toLowerCase();
-        const priceText = item.querySelector('span:last-child').textContent.toLowerCase();
-
-        // Show if either language contains query
-        if (nameEn.includes(query) || nameAr.includes(query)) {
-          item.style.display = "flex";
-          // Make sure parent section is expanded to see matches
-          const list = item.parentElement;
-          if (list.classList.contains("hidden")) {
-            list.classList.remove("hidden");
-            const header = list.previousSibling;
-            if (header) {
-              const icon = header.querySelector(".toggle-icon");
-              icon.textContent = "−";
-              icon.classList.add("expanded");
-            }
-          }
-        } else {
-          item.style.display = "none";
-        }
-      });
-    });
-  </script>
-</body>
-</html>
+          {
