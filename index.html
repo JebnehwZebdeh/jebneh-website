@@ -119,5 +119,102 @@
       </div>
     </div>
   </div>
-</body>
-</html>
+
+  <script>
+    function toggleLang() {
+      document.body.classList.toggle("arabic");
+      const isArabic = document.body.classList.contains("arabic");
+      document.getElementById("lang-button-text").textContent = isArabic ? "English" : "عربي";
+    }
+
+    const menuData = [
+      { en: "Manakish", ar: "مناقيش", items: [
+        { name: "Zaatar", ar: "زعتر", price: "$0.50" },
+        { name: "Cheese", ar: "جبنة", price: "$1.00" },
+        { name: "Zaatar & Cheese", ar: "زعتر و جبنة", price: "$1.50" },
+        { name: "Kashkawan", ar: "قشقوان", price: "$1.50" },
+        { name: "Hotdog", ar: "هوت دوغ", price: "$2.00" }
+      ]},
+      { en: "Meshrouha", ar: "مشروحة", items: [
+        { name: "Zaatar Meshrouha", ar: "مشروحة زعتر", price: "$1.00" },
+        { name: "Cheese Meshrouha", ar: "مشروحة جبنة", price: "$1.50" },
+        { name: "Kashkawan Meshrouha", ar: "مشروحة قشقوان", price: "$2.00" },
+        { name: "Labneh Meshrouha", ar: "مشروحة لبنة", price: "$2.00" },
+        { name: "Cheese & Hotdog", ar: "جبنة و هوت دوغ", price: "$3.00" }
+      ]},
+      { en: "Saroukh Wraps", ar: "صاروخ", items: [
+        { name: "Cheese Saroukh", ar: "صاروخ جبنة", price: "$3.00" },
+        { name: "Cheese & Zaatar", ar: "جبنة و زعتر", price: "$3.50" },
+        { name: "Cheese & Labneh", ar: "جبنة و لبنة", price: "$4.00" },
+        { name: "Hotdog & Cheese", ar: "هوت دوغ و جبنة", price: "$5.00" },
+        { name: "Chicken & Cheese", ar: "دجاج و جبنة", price: "$6.00" }
+      ]},
+      { en: "Pizza", ar: "بيتزا", items: [
+        { name: "Cheese Pizza", ar: "بيتزا جبنة", price: "$2.50" },
+        { name: "Zaatar & Cheese", ar: "زعتر و جبنة", price: "$3.00" },
+        { name: "Pepperoni", ar: "بيبروني", price: "$3.50" },
+        { name: "Vegetarian", ar: "نباتية", price: "$4.00" }
+      ]},
+      { en: "Special Add-ons", ar: "إضافات مميزة", items: [
+        { name: "Chicken Shawarma", ar: "شاورما دجاج", price: "$4.00" },
+        { name: "Meat Shawarma", ar: "شاورما لحم", price: "$4.00" },
+        { name: "Fajita", ar: "فاهيتا", price: "$4.00" },
+        { name: "Mushroom & Cream", ar: "فطر و كريمة", price: "$4.00" }
+      ]},
+      { en: "Desserts", ar: "حلويات", items: [
+        { name: "Snickers Pie", ar: "منقوشة سنيكرز", price: "$4.00" },
+        { name: "Mars Pie", ar: "منقوشة مارس", price: "$4.00" }
+      ]}
+    ];
+
+    const menuSections = document.getElementById("menuSections");
+
+    menuData.forEach(section => {
+      const container = document.createElement("div");
+      container.className = "border rounded-lg p-4 shadow-sm";
+
+      const header = document.createElement("div");
+      header.className = "flex justify-between items-center cursor-pointer";
+      header.innerHTML = `
+        <h3 class="text-lg font-bold text-red-600">
+          <span data-lang="en">${section.en}</span>
+          <span data-lang="ar">${section.ar}</span>
+        </h3>
+        <span class="text-xl toggle-icon select-none">+</span>
+      `;
+
+      const list = document.createElement("ul");
+      list.className = "mt-2 hidden space-y-2 text-sm sm:text-base";
+
+      section.items.forEach(item => {
+        const li = document.createElement("li");
+        li.className = "flex justify-between menu-item";
+        li.innerHTML = `
+          <span>
+            <span data-lang="en">${item.name}</span>
+            <span data-lang="ar">${item.ar}</span>
+          </span>
+          <span>${item.price}</span>
+        `;
+        list.appendChild(li);
+      });
+
+      header.addEventListener("click", () => {
+        const expanded = list.classList.contains("hidden");
+        list.classList.toggle("hidden");
+        header.querySelector(".toggle-icon").textContent = expanded ? "−" : "+";
+      });
+
+      container.appendChild(header);
+      container.appendChild(list);
+      menuSections.appendChild(container);
+    });
+
+    document.getElementById("searchInput").addEventListener("input", function () {
+      const query = this.value.toLowerCase();
+      document.querySelectorAll("#menuSections li.menu-item").forEach(item => {
+        const text = item.textContent.toLowerCase();
+        item.style.display = text.includes(query) ? "flex" : "none";
+      });
+    });
+ 
