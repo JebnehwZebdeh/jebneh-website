@@ -309,13 +309,18 @@
   </div>
 
   <div class="border rounded-lg p-4 shadow-sm">
-    <div class="flex justify-between items-center cursor-pointer" onclick="toggleSection(this)">
-      <h3 class="text-lg font-bold text-red-600">
-        <span data-lang="en">Pizza</span>
-        <span data-lang="ar">بيتزا</span>
-      </h3>
-      <span class="text-xl toggle-icon select-none">+</span>
-    </div>
+  <div class="flex justify-between items-center cursor-pointer" onclick="toggleSection(this)">
+    <h3 class="text-lg font-bold text-red-600 flex items-center gap-2">
+      <span data-lang="en">Pizza</span>
+      <span data-lang="ar">بيتزا</span>
+      <!-- Image next to Pizza text -->
+      <img src="Pizza.png" alt="Pizza" class="w-8 h-8 object-contain" />
+    </h3>
+    <span class="text-xl toggle-icon select-none">+</span>
+  </div>
+  <!-- collapsible content goes here -->
+</div>
+
     <ul class="mt-2 hidden space-y-2 text-sm sm:text-base">
       <li class="flex justify-between"><span data-lang="en">Cheese Pizza</span><span data-lang="ar">بيتزا جبنة</span><span>$2.50</span></li>
       <li class="flex justify-between"><span data-lang="en">Zaatar & Cheese</span><span data-lang="ar">زعتر وجبنة</span><span>$3.00</span></li>
