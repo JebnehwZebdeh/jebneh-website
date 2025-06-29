@@ -519,5 +519,21 @@
     icon.textContent = icon.textContent === '+' ? '-' : '+'; // toggle icon sign
   }
 </script>
+  document.getElementById('searchInput').addEventListener('input', function() {
+    const filter = this.value.toLowerCase();
+    const menuItems = document.querySelectorAll('ul.mt-2 li');
+
+    menuItems.forEach(item => {
+      const textEn = item.querySelector('[data-lang="en"]').textContent.toLowerCase();
+      const textAr = item.querySelector('[data-lang="ar"]').textContent.toLowerCase();
+
+      if (textEn.includes(filter) || textAr.includes(filter)) {
+        item.style.display = '';
+      } else {
+        item.style.display = 'none';
+      }
+    });
+  });
+</script>
 </body>
 </html>
