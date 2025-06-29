@@ -517,5 +517,13 @@
 
     // You can add dynamic menu generation here if needed
   </script>
+  function toggleMenu(header) {
+    const menu = header.nextElementSibling; // this gets the <ul> after the div
+    const icon = header.querySelector('.toggle-icon'); // this gets the + sign
+
+    menu.classList.toggle('hidden'); // show/hide menu
+    icon.textContent = icon.textContent === '+' ? '-' : '+'; // toggle icon
+  }
+</script>
 </body>
 </html>
