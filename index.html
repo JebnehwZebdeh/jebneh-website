@@ -516,7 +516,7 @@
     const icon = header.querySelector('.toggle-icon');
     menu.classList.toggle('hidden');
     icon.textContent = icon.textContent === '+' ? '-' : '+';
-  }
+  };
 
   document.addEventListener('DOMContentLoaded', () => {
     const searchInput = document.getElementById('searchInput');
@@ -527,31 +527,37 @@
 
       sections.forEach(section => {
         const ul = section.querySelector('ul');
+        const icon = section.querySelector('.toggle-icon');
         const liItems = ul.querySelectorAll('li');
         let sectionHasMatch = false;
 
         liItems.forEach(li => {
-          const en = li.querySelector('[data-lang="en"]')?.textContent.toLowerCase() || '';
-          const ar = li.querySelector('[data-lang="ar"]')?.textContent.toLowerCase() || '';
-          const isMatch = en.includes(filter) || ar.includes(filter);
+          const enSpan = li.querySelector('[data-lang="en"]');
+          const arSpan = li.querySelector('[data-lang="ar"]');
 
+          const en = enSpan ? enSpan.textContent.toLowerCase() : '';
+          const ar = arSpan ? arSpan.textContent.toLowerCase() : '';
+
+          const isMatch = en.includes(filter) || ar.includes(filter);
           li.style.display = isMatch ? '' : 'none';
           if (isMatch) sectionHasMatch = true;
         });
 
-        // Show/hide entire section
-        section.style.display = sectionHasMatch || filter === '' ? '' : 'none';
-
-        // Always show UL if filtering; collapse if empty
-        if (filter) {
-          ul.classList.remove('hidden');
-        } else {
+        // Show/hide section and icon
+        if (filter === '') {
+          section.style.display = '';
           ul.classList.add('hidden');
+          icon.textContent = '+';
+        } else {
+          section.style.display = sectionHasMatch ? '' : 'none';
+          if (sectionHasMatch) {
+            ul.classList.remove('hidden');
+            icon.textContent = '-';
+          }
         }
       });
     });
   });
 </script>
-
 </body>
 </html>
