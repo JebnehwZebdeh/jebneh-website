@@ -523,7 +523,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const searchInput = document.getElementById('searchInput');
     searchInput.addEventListener('input', function() {
       const filter = this.value.toLowerCase();
-      const menuItems = document.querySelectorAll('ul.mt-2 li');
+      const menuItems = document.querySelectorAll('#menu ul li');
 
       menuItems.forEach(item => {
         const textEn = item.querySelector('[data-lang="en"]').textContent.toLowerCase();
