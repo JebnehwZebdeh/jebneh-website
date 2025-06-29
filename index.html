@@ -504,25 +504,19 @@
     </div>
   </div>
   <script>
-    function toggleLang() {
-      document.body.classList.toggle("arabic");
-      const isArabic = document.body.classList.contains("arabic");
-      document.getElementById("lang-button-text").textContent = isArabic ? "English" : "عربي";
-    }
+    // Toggle page language (Arabic / English)
+  function toggleLang() {
+    document.body.classList.toggle("arabic");
+    const isArabic = document.body.classList.contains("arabic");
+    document.getElementById("lang-button-text").textContent = isArabic ? "English" : "عربي";
+  }
 
-    function toggleSection(button) {
-      const section = button.nextElementSibling;
-      section.classList.toggle("hidden");
-    }
-
-    // You can add dynamic menu generation here if needed
-  </script>
-  function toggleMenu(header) {
-    const menu = header.nextElementSibling; // this gets the <ul> after the div
-    const icon = header.querySelector('.toggle-icon'); // this gets the + sign
-
-    menu.classList.toggle('hidden'); // show/hide menu
-    icon.textContent = icon.textContent === '+' ? '-' : '+'; // toggle icon
+  // Toggle menu section visibility and icon (+ / -)
+  function toggleSection(header) {
+    const menu = header.parentElement.querySelector('ul');  // find <ul> inside same box
+    const icon = header.querySelector('.toggle-icon');      // find the + / - icon
+    menu.classList.toggle('hidden');                        // show/hide the menu
+    icon.textContent = icon.textContent === '+' ? '-' : '+'; // toggle icon sign
   }
 </script>
 </body>
