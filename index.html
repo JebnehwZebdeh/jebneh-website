@@ -504,7 +504,7 @@
       </div>
     </div>
   </div>
- <script>
+<script>
   function toggleLang() {
     document.body.classList.toggle("arabic");
     const isArabic = document.body.classList.contains("arabic");
@@ -516,35 +516,38 @@
     const icon = header.querySelector('.toggle-icon');
     menu.classList.toggle('hidden');
     icon.textContent = icon.textContent === '+' ? '-' : '+';
-  };
+  }
 
   document.addEventListener('DOMContentLoaded', () => {
     const searchInput = document.getElementById('searchInput');
+
     searchInput.addEventListener('input', function () {
-      const filter = this.value.toLowerCase();
+      const filter = this.value.trim().toLowerCase();
+      const sections = document.querySelectorAll('#menu .border');
 
-      const sections = document.querySelectorAll('#menu .border'); // each menu section
       sections.forEach(section => {
-        const items = section.querySelectorAll('ul li');
-        let hasVisibleItem = false;
+        const ul = section.querySelector('ul');
+        const liItems = ul.querySelectorAll('li');
+        let sectionHasMatch = false;
 
-        items.forEach(item => {
-          const textEn = item.querySelector('[data-lang="en"]').textContent.toLowerCase();
-          const textAr = item.querySelector('[data-lang="ar"]').textContent.toLowerCase();
+        liItems.forEach(li => {
+          const en = li.querySelector('[data-lang="en"]')?.textContent.toLowerCase() || '';
+          const ar = li.querySelector('[data-lang="ar"]')?.textContent.toLowerCase() || '';
+          const isMatch = en.includes(filter) || ar.includes(filter);
 
-          const match = textEn.includes(filter) || textAr.includes(filter);
-          item.style.display = match ? '' : 'none';
-          if (match) hasVisibleItem = true;
+          li.style.display = isMatch ? '' : 'none';
+          if (isMatch) sectionHasMatch = true;
         });
 
-        const list = section.querySelector('ul');
-        if (filter === '') {
-          list.classList.add('hidden'); // hide everything if search is empty
-        } else {
-          list.classList.remove('hidden'); // force show filtered section
-        }
+        // Show/hide entire section
+        section.style.display = sectionHasMatch || filter === '' ? '' : 'none';
 
-        section.style.display = hasVisibleItem ? '' : 'none'; // hide section if no item matches
+        // Always show UL if filtering; collapse if empty
+        if (filter) {
+          ul.classList.remove('hidden');
+        } else {
+          ul.classList.add('hidden');
+        }
       });
     });
   });
