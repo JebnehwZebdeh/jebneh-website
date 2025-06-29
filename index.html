@@ -504,39 +504,51 @@
       </div>
     </div>
   </div>
-  <script>
-    // Toggle page language (Arabic / English)
+ <script>
   function toggleLang() {
     document.body.classList.toggle("arabic");
     const isArabic = document.body.classList.contains("arabic");
     document.getElementById("lang-button-text").textContent = isArabic ? "English" : "عربي";
   }
 
-  // Toggle menu section visibility and icon (+ / -)
   function toggleSection(header) {
-    const menu = header.parentElement.querySelector('ul');  // find <ul> inside same box
-    const icon = header.querySelector('.toggle-icon');      // find the + / - icon
-    menu.classList.toggle('hidden');                        // show/hide the menu
-    icon.textContent = icon.textContent === '+' ? '-' : '+'; // toggle icon sign
+    const menu = header.parentElement.querySelector('ul');
+    const icon = header.querySelector('.toggle-icon');
+    menu.classList.toggle('hidden');
+    icon.textContent = icon.textContent === '+' ? '-' : '+';
   };
-document.addEventListener('DOMContentLoaded', () => {
+
+  document.addEventListener('DOMContentLoaded', () => {
     const searchInput = document.getElementById('searchInput');
-    searchInput.addEventListener('input', function() {
+    searchInput.addEventListener('input', function () {
       const filter = this.value.toLowerCase();
-      const menuItems = document.querySelectorAll('#menu ul li');
 
-      menuItems.forEach(item => {
-        const textEn = item.querySelector('[data-lang="en"]').textContent.toLowerCase();
-        const textAr = item.querySelector('[data-lang="ar"]').textContent.toLowerCase();
+      const sections = document.querySelectorAll('#menu .border'); // each menu section
+      sections.forEach(section => {
+        const items = section.querySelectorAll('ul li');
+        let hasVisibleItem = false;
 
-        if (textEn.includes(filter) || textAr.includes(filter)) {
-          item.style.display = '';
+        items.forEach(item => {
+          const textEn = item.querySelector('[data-lang="en"]').textContent.toLowerCase();
+          const textAr = item.querySelector('[data-lang="ar"]').textContent.toLowerCase();
+
+          const match = textEn.includes(filter) || textAr.includes(filter);
+          item.style.display = match ? '' : 'none';
+          if (match) hasVisibleItem = true;
+        });
+
+        const list = section.querySelector('ul');
+        if (filter === '') {
+          list.classList.add('hidden'); // hide everything if search is empty
         } else {
-          item.style.display = 'none';
+          list.classList.remove('hidden'); // force show filtered section
         }
+
+        section.style.display = hasVisibleItem ? '' : 'none'; // hide section if no item matches
       });
     });
   });
 </script>
+
 </body>
 </html>
