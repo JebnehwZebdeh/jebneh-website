@@ -796,5 +796,42 @@
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 </script>
+  <!-- JavaScript for search -->
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const searchInput = document.getElementById('searchInput');
+    const sections = document.querySelectorAll('#menuSections > div');
+
+    searchInput.addEventListener('input', function () {
+      const filter = this.value.toLowerCase();
+
+      sections.forEach(section => {
+        const ul = section.querySelector('ul');
+        const icon = section.querySelector('.toggle-icon');
+        let sectionHasMatch = false;
+
+        const listItems = ul.querySelectorAll('li');
+        listItems.forEach(li => {
+          const text = li.textContent.toLowerCase();
+          const match = text.includes(filter);
+          li.style.display = match ? '' : 'none';
+          if (match) sectionHasMatch = true;
+        });
+
+        if (filter === '') {
+          section.style.display = '';
+          ul.classList.add('hidden');
+          icon.textContent = '+';
+        } else {
+          section.style.display = sectionHasMatch ? '' : 'none';
+          if (sectionHasMatch) {
+            ul.classList.remove('hidden');
+            icon.textContent = '-';
+          }
+        }
+      });
+    });
+  });
+</script>
 <body style="background: linear-gradient(to bottom, #ffe6e6, #990000); min-height: 100vh; margin: 1; padding: 1;">
 </html>
